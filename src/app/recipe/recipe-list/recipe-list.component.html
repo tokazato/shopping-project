@@ -1,0 +1,19 @@
+<div class="recipes__box">
+    <br>
+    <button class="new__recipe">New Recipe</button>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <div class="recipes" *ngFor="let item of recipes">
+        <div class="recipe">
+            <div class="recipe__text__box">
+                <h1 class="recipe__name">{{item.name}}</h1>
+                <p class="recipe__description">{{item.description}}</p>
+            </div>
+            <div class="recipe__img__box">
+                <img [src]="item.img" alt="" class="recipe__img">
+            </div>
+        </div>
+    </div>
+</div>

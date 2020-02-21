@@ -1,0 +1,26 @@
+.recipes__box {
+    width: 40%;
+}
+.new__recipe {
+    padding: 15px 25px;
+    border: none;
+    background-color: rgb(41, 161, 41);
+    color: #fff;
+}
+.recipe {
+    color: rgb(9, 46, 9);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    img {
+        height: 150px;
+        width: 200px;
+        border-radius: 20px;
+    }
+    &:hover {
+        background-color: rgb(231, 231, 231);
+    }
+}

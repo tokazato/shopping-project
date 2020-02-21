@@ -1,0 +1,38 @@
+.main__header {
+    background-color: rgb(235, 235, 235);
+}
+.header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__left {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        &__logo {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            cursor: pointer;
+            font-size: 30px;
+            padding: 10px 20px;
+        }
+        &__nav {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 0px 20px;
+            &:hover {
+                background-color: rgb(31, 48, 83);
+                color: #fff;
+            }
+        }
+    }
+}
+.header__right {
+    display: flex;
+    height: 100%;
+}

@@ -1,0 +1,36 @@
+.input__box {
+    display: flex;
+}
+.name__box, .amount__box {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 30px 5px;
+    label {
+        font-size: 18px;
+    }
+    input {
+        padding: 8px 0;
+    }
+}
+button {
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 10px 20px;
+    transition: 0.3s ease;
+    &:hover {
+        transform: scale(1.1);
+        transition: 0.3s ease;
+    }
+}
+.ingredient {
+    margin: 10px 0;
+    border: 1px solid;
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
