@@ -1,11 +1,14 @@
 .recipes__box {
-    width: 40%;
+    width: 100%;
 }
 .new__recipe {
     padding: 15px 25px;
     border: none;
     background-color: rgb(41, 161, 41);
     color: #fff;
+}
+button {
+    cursor: pointer;
 }
 .recipe {
     color: rgb(9, 46, 9);

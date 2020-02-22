@@ -22,4 +22,13 @@ export class RecipeService {
             ]
         }
     ]
+
+    getNewRecipe(name: string, description: string, img: string, ingredients: []) {
+        this.recipes.push({
+            name: name,
+            description: description,
+            img: img,
+            ingredients: ingredients
+        })
+    }
 }

@@ -58,10 +58,12 @@ export class ShoppingListComponent implements OnInit {
       this.ingredients.splice(this.ingredIndex, 1)
       this.myForm.reset()
     }
+    this.change = false;
   }
 
   clearInput() {
     this.myForm.reset();
+    this.change = false;
   }
 
 }

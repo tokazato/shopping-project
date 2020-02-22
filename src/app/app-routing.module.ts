@@ -4,17 +4,26 @@ import { AuthComponent } from './auth/auth.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
+import { NewComponentComponent } from './recipe/new-component/new-component.component';
+import { NonSelectedComponent } from './recipe/non-selected/non-selected.component';
 
 const appRoutes: Routes = [
     {path: '', redirectTo: "auth", pathMatch: "full" },
     {
         path: 'auth', 
-        component: AuthComponent, 
-        children: [
-            {path: '', component: RecipeListComponent}
-        ]
+        component: AuthComponent
     },
-    {path: 'recipe', component: RecipeComponent },
+    {   path: 'recipe', 
+        component: RecipeComponent, 
+        children: [
+        {   
+            path: '', component: NonSelectedComponent
+        },
+        {   
+            path: 'new', component: NewComponentComponent
+        },
+    ]
+ },
     {path: 'shopping-list', component: ShoppingListComponent }
 ]
 

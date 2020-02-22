@@ -1,0 +1,35 @@
+<div class="new__recipes__box">
+    <form [formGroup]="formRecipe" (ngSubmit)="onSubmit(formRecipe)" class="new__recipes__form">
+        <div class="button__box">
+            <button [disabled]="!formRecipe.valid" type="submit">Save</button>
+            <button type="button">Cancel</button>
+        </div>
+        <br>
+        <div class="form__group">
+            <label for="name">name</label>
+            <input type="text" name="name" id="name" formControlName="name">
+        </div>
+        <br>
+        <div class="form__group">
+            <label for="img__url">IMG URL</label>
+            <input type="text" name="img" id="img" formControlName="img">
+        </div>
+        <br>
+        <div class="form__group">
+            <label for="text">Description</label>
+            <textarea name="desc" id="desc" cols="30" rows="10" formControlName="desc"></textarea>
+        </div>
+        <br>
+        <div class="testi" formArrayName="ingredi">
+            <div *ngFor="let item of formRecipe.get('ingredi').controls; let i = index" class="ingredient__input__box" [formGroupName]="i">
+                <input type="text" class="ingred__name" name="ingred_name" id="ingred_name" formControlName="ingred_name">
+                <input type="number" name="ingred__number" id="ingred__number" formControlName="ingred__number" >
+                <button (click)="deleteIngredient(i)" type="button">X</button>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <button (click)="addIngredent()" type="button">Add Ingregients</button>
+    </form>
+</div>

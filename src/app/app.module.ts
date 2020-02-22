@@ -11,6 +11,8 @@ import { RoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
+import { NewComponentComponent } from './recipe/new-component/new-component.component';
+import { NonSelectedComponent } from './recipe/non-selected/non-selected.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component'
     ShoppingListComponent,
     RecipeComponent,
     AuthComponent,
-    RecipeListComponent
+    RecipeListComponent,
+    NewComponentComponent,
+    NonSelectedComponent
   ],
   imports: [
     CommonModule,

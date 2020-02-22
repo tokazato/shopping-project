@@ -1,0 +1,18 @@
+button {
+    padding: 10px 22px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+.form__group {
+    display: flex;
+    flex-direction: column;
+}
+input {
+    padding: 10px;
+}
+.ingredient__input__box {
+    margin-bottom: 20px;
+}
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
