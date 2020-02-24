@@ -6,6 +6,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
 import { NewComponentComponent } from './recipe/new-component/new-component.component';
 import { NonSelectedComponent } from './recipe/non-selected/non-selected.component';
+import { SelectRecipesComponent } from './recipe/select-recipes/select-recipes.component';
 
 const appRoutes: Routes = [
     {path: '', redirectTo: "auth", pathMatch: "full" },
@@ -21,6 +22,9 @@ const appRoutes: Routes = [
         },
         {   
             path: 'new', component: NewComponentComponent
+        },
+        {   
+            path: ':id', component: SelectRecipesComponent
         },
     ]
  },

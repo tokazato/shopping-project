@@ -5,7 +5,7 @@
     <br>
     <hr>
     <br>
-    <div class="recipes" *ngFor="let item of recipes">
+    <a class="recipes" *ngFor="let item of recipes; let i = index" [routerLink]="[i]" >
         <div class="recipe">
             <div class="recipe__text__box">
                 <h1 class="recipe__name">{{item.name}}</h1>
@@ -15,5 +15,5 @@
                 <img [src]="item.img" alt="" class="recipe__img">
             </div>
         </div>
-    </div>
+    </a>
 </div>

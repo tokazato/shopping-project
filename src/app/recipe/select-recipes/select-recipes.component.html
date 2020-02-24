@@ -1,0 +1,19 @@
+<div class="selected__recipes">
+    <img [src]="selectedRecipe.img" alt="" class="img__box">
+    <h1>{{selectedRecipe.name}}</h1>
+    <div (click)="dropdown()" class="dropdown__content">
+        Manage Recipe
+    </div>
+    <div *ngIf="istrue" class="dropdown__link">
+        <p>to shopping list</p>
+        <p>edit</p>
+        <p>delete</p>
+    </div>
+    <div class="desc">
+        {{selectedRecipe.description}}
+    </div>
+    <div>
+       <span class="ingred1">ingredient</span>
+       <span>(5)</span>
+    </div>
+</div>

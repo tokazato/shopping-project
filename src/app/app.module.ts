@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
 import { NewComponentComponent } from './recipe/new-component/new-component.component';
 import { NonSelectedComponent } from './recipe/non-selected/non-selected.component';
+import { SelectRecipesComponent } from './recipe/select-recipes/select-recipes.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NonSelectedComponent } from './recipe/non-selected/non-selected.compone
     AuthComponent,
     RecipeListComponent,
     NewComponentComponent,
-    NonSelectedComponent
+    NonSelectedComponent,
+    SelectRecipesComponent
   ],
   imports: [
     CommonModule,

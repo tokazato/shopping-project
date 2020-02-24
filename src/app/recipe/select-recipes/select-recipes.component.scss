@@ -1,0 +1,36 @@
+.desc {
+    font-size: 20px;
+    margin: 10px 0;
+}
+.ingred1 {
+    margin-right: 10px;
+}
+span {
+    font-size: 20px;
+}
+.dropdown__link  {
+    display: table;
+    background-color: rgb(231, 255, 231);
+    padding: 10px;
+}
+.dropdown__content {
+    font-size: 20px;
+    background-color: green;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    margin: 10px 0;
+    cursor: pointer;
+}
+.dropdown__link p {
+    font-size: 18px;
+    font-family: cursive;
+    margin: 5px 0;
+    
+    cursor: pointer;
+    &:hover {
+        color: green;
+        font-size: 22px;
+    }
+}

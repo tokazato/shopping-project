@@ -20,8 +20,26 @@ export class RecipeService {
                 { 'atami': 10 },
                 { 'jolo': 20 }
             ]
+        },
+        {
+            name: "meore kerdzi",
+            description: 'description meore',
+            img: 'https://pluspng.com/img-png/salad-hd-png-greek-salad-png-image-42826-salad-png-427.png',
+            ingredients: [
+                { 'atami': 10 },
+                { 'jolo': 20 }
+            ]
         }
-    ]
+    ];
+
+    recipesi(index) {
+        console.log(this.recipes[index]);
+        return this.recipes[index];
+    }
+
+    addrecipe(recipe) {
+        this.recipes.push(recipe)
+    }
 
     getNewRecipe(name: string, description: string, img: string, ingredients: []) {
         this.recipes.push({

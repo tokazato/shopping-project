@@ -8,11 +8,18 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipeListComponent implements OnInit {
   recipes;
+  recipeIndx: number;
 
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
-    this.recipes = this.recipeService.recipes
+    this.recipes = this.recipeService.recipes;
   }
+
+  
+
+  
+
+  
 
 }

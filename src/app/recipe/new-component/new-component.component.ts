@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-new-component',
@@ -10,30 +11,36 @@ import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 export class NewComponentComponent implements OnInit {
   formRecipe: FormGroup;
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(
+    private recipeService: RecipeService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.initForm()
   }
 
   addIngredent() {
-    (<FormArray>this.formRecipe.get('ingredi')).push(
+    (<FormArray>this.formRecipe.get('ingredients')).push(
       new FormGroup({
         'ingred_name': new FormControl(null, Validators.required),
         'ingred__number': new FormControl(null, Validators.required)
       })
     )
-    
   }
 
-  deleteIngredient(index) {
+  deleteIngredient(index: number) {
+    (<FormArray>this.formRecipe.get('ingredients')).removeAt(index)
   }
 
-  // onSubmit(form: FormGroup) {
-  //   let name = form.value.name;
-  //   let imgUrl = form.value.imgUrl;
-  //   let description = form.value.description;
-  // }
+  cancel() {
+    this.router.navigate(['../'], {relativeTo: this.route})
+  }
+
+  onSubmit(form: FormGroup) {
+    this.recipeService.addrecipe(form.value)
+    console.log(this.formRecipe.value)
+  }
 
   initForm() {
     let newRecipeName = '';
@@ -44,9 +51,12 @@ export class NewComponentComponent implements OnInit {
     this.formRecipe = new FormGroup({
       'name': new FormControl(newRecipeName, Validators.required),
       'img': new FormControl(newRecipeImg, Validators.required),
-      'desc': new FormControl(newRecipeDesc, Validators.required),
-      'ingredi': newRecipeIngredient
+      'description': new FormControl(newRecipeDesc, Validators.required),
+      'ingredients': newRecipeIngredient
     })
+
+    
+
 
     
   }
