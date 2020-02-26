@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../recipe.service';
-import { Route, ActivatedRoute } from '@angular/router';
+import { Route, ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-select-recipes',
@@ -13,7 +13,8 @@ export class SelectRecipesComponent implements OnInit {
   selectedRecipe;
   constructor(
     private recipeServer: RecipeService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     ) { }
 
   ngOnInit() {
@@ -26,11 +27,21 @@ export class SelectRecipesComponent implements OnInit {
     this.activatedRoute.params.subscribe(para => {
       this.currentparam = para['id']
       this.selectedRecipe = this.recipeServer.recipes[this.currentparam]
+      console.log(this.selectedRecipe)
     })
   }
 
   dropdown() {
     this.istrue = !this.istrue;
+  }
+
+  deleteRecipes() {
+    this.recipeServer.deleteItem(this.currentparam);
+    this.router.navigate(['recipe'])
+  }
+
+  editRecipes() {
+    this.router.navigate(['edit'], {relativeTo: this.activatedRoute})
   }
 
 }

@@ -8,8 +8,14 @@ export class RecipeService {
             description: 'description pirveli sauketeso kerdzi',
             img: 'https://pluspng.com/img-png/salad-hd-png-greek-salad-png-image-42826-salad-png-427.png',
             ingredients: [
-                { 'vashli': 10 },
-                { 'msxali': 20 }
+                { 
+                    ingred_name: 'vashli',
+                    ingred__number: 10 
+                },
+                { 
+                    ingred_name: 'msxali',
+                    ingred__number: 20 
+                },
             ]
         },
         {
@@ -17,23 +23,28 @@ export class RecipeService {
             description: 'description meore',
             img: 'https://img.freepik.com/free-photo/salad-tomatoes-cucumber-red-onions-lettuce-leaves_2829-1732.jpg?size=626&ext=jpg',
             ingredients: [
-                { 'atami': 10 },
-                { 'jolo': 20 }
+                { 
+                    ingred_name: 'atami',
+                    ingred__number: 6 
+                },
+                { 
+                    ingred_name: 'jolo',
+                    ingred__number: 9 
+                },
             ]
         },
-        {
-            name: "meore kerdzi",
-            description: 'description meore',
-            img: 'https://pluspng.com/img-png/salad-hd-png-greek-salad-png-image-42826-salad-png-427.png',
-            ingredients: [
-                { 'atami': 10 },
-                { 'jolo': 20 }
-            ]
-        }
+        // {
+        //     name: "mesame kerdzi",
+        //     description: 'description mesame',
+        //     img: 'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FEdit%2F2019-06-Cookie-Salad%2FIMG_2640',
+        //     ingredients: [
+        //         { 'marwyvi': 15 },
+        //         { 'banani': 30 }
+        //     ]
+        // }
     ];
 
     recipesi(index) {
-        console.log(this.recipes[index]);
         return this.recipes[index];
     }
 
@@ -41,12 +52,16 @@ export class RecipeService {
         this.recipes.push(recipe)
     }
 
-    getNewRecipe(name: string, description: string, img: string, ingredients: []) {
-        this.recipes.push({
-            name: name,
-            description: description,
-            img: img,
-            ingredients: ingredients
-        })
+    // getNewRecipe(name: string, description: string, img: string, ingredients: []) {
+    //     this.recipes.push({
+    //         name: name,
+    //         description: description,
+    //         img: img,
+    //         ingredients: ingredients
+    //     })
+    // }
+
+    deleteItem(index) {
+        this.recipes.splice(index, 1)
     }
 }

@@ -6,14 +6,21 @@
     </div>
     <div *ngIf="istrue" class="dropdown__link">
         <p>to shopping list</p>
-        <p>edit</p>
-        <p>delete</p>
+        <p (click)="editRecipes()">edit</p>
+        <p (click)="deleteRecipes()">delete</p>
     </div>
     <div class="desc">
         {{selectedRecipe.description}}
     </div>
-    <div>
-       <span class="ingred1">ingredient</span>
-       <span>(5)</span>
+    <!-- <div *ngFor="let item of selectedRecipe.ingredients">
+        <div *ngFor="let item2 of item | keyvalue">
+           <span class="ingred1">{{ item2.key }} ({{item2.value}})</span>
+        </div>
+    </div> -->
+    <div *ngFor="let item of selectedRecipe.ingredients; let i = index">
+        <!-- <div *ngFor="let item2 of item | keyvalue"> -->
+           <span class="ingred1">{{ item.ingred_name }} </span>
+           <span>({{ item.ingred__number }})</span>
+        <!-- </div> -->
     </div>
 </div>

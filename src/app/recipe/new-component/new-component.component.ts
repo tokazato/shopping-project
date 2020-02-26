@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-new-component',
@@ -10,6 +10,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class NewComponentComponent implements OnInit {
   formRecipe: FormGroup;
+  editRecipe = false;
+  currentRecipesId: number;
 
   constructor(
     private recipeService: RecipeService,
@@ -17,14 +19,19 @@ export class NewComponentComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.initForm()
+    this.route.params.subscribe((para: Params) => {
+      this.currentRecipesId = +para['id']
+      this.editRecipe = (para['id'] != null);
+      this.initForm()
+    })
+   
   }
 
   addIngredent() {
     (<FormArray>this.formRecipe.get('ingredients')).push(
       new FormGroup({
-        'ingred_name': new FormControl(null, Validators.required),
-        'ingred__number': new FormControl(null, Validators.required)
+        ingred_name: new FormControl(null, Validators.required),
+        ingred__number: new FormControl(null, Validators.required)
       })
     )
   }
@@ -38,8 +45,20 @@ export class NewComponentComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    this.recipeService.addrecipe(form.value)
-    console.log(this.formRecipe.value)
+    console.log(form)
+    if(this.editRecipe) {
+
+      this.recipeService.recipes[this.currentRecipesId] = this.formRecipe.value
+
+      this.router.navigate(['../'], {relativeTo: this.route})
+
+    } else {
+
+      this.recipeService.addrecipe(this.formRecipe.value)
+
+      this.router.navigate(['../'], {relativeTo: this.route})
+
+    }
   }
 
   initForm() {
@@ -48,12 +67,30 @@ export class NewComponentComponent implements OnInit {
     let newRecipeDesc = '';
     let newRecipeIngredient = new FormArray([]);
 
+    if(this.editRecipe) {
+      let currentEditRecipe = this.recipeService.recipesi(this.currentRecipesId);
+      newRecipeName = currentEditRecipe.name;
+      newRecipeImg = currentEditRecipe.img;
+      newRecipeDesc = currentEditRecipe.description;
+      if( currentEditRecipe['ingredients'] ) {
+        for(let ingred of currentEditRecipe.ingredients) {
+            newRecipeIngredient.push(
+              new FormGroup({
+                ingred_name: new FormControl( ingred.ingred_name , Validators.required),
+                ingred__number: new FormControl( ingred.ingred__number , Validators.required),
+              })
+            )
+        }
+      }
+    }
+
     this.formRecipe = new FormGroup({
       'name': new FormControl(newRecipeName, Validators.required),
       'img': new FormControl(newRecipeImg, Validators.required),
       'description': new FormControl(newRecipeDesc, Validators.required),
       'ingredients': newRecipeIngredient
     })
+    console.log('init', this.formRecipe.value)
 
     
 

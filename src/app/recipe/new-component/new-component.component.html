@@ -12,7 +12,8 @@
         <br>
         <div class="form__group">
             <label for="img__url">IMG URL</label>
-            <input type="text" name="img" id="img" formControlName="img">
+            <input class="edit-img-path" type="text" name="img" id="img" formControlName="img" #imagePath>
+            <img [src]="imagePath.value" alt="">
         </div>
         <br>
         <div class="form__group">
