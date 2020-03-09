@@ -2,12 +2,15 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Ingredient } from "./ingredient.model"
 import { format } from 'url';
+import { RecipeService } from '../recipe/recipe.service';
+import { pipe } from 'rxjs';
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss']
 })
 export class ShoppingListComponent implements OnInit {
+  raggaa
   myForm: FormGroup;
   change = false;
   ingredIndex = null;
@@ -15,13 +18,17 @@ export class ShoppingListComponent implements OnInit {
     { 'banani': 10 },
     { 'vashli': 16 },
   ]
-  constructor() { }
+  constructor( private recipeService: RecipeService) { }
 
   ngOnInit() {
     this.myForm = new FormGroup({
       'name': new FormControl(null, [Validators.required]),
       'amount': new FormControl(null, [Validators.required])
     })
+    this.newIngredientFromRecipe()
+
+    console.log('on init', this.ingredients)
+
   }
 
   
@@ -65,5 +72,28 @@ export class ShoppingListComponent implements OnInit {
     this.myForm.reset();
     this.change = false;
   }
+
+  newIngredientFromRecipe() {
+    // this.recipeService.newingredebi.subscribe(param => {
+    //   console.log(param[1])
+    //   let name = param[1].ingred_name
+    //   let mount = param[1].ingred__number
+    //   let saveNewIngred = {}
+    //   saveNewIngred[name] = mount
+    //   this.ingredients.push(saveNewIngred)
+    //   console.log(this.ingredients)
+    //   console.log(saveNewIngred)
+    // })
+    
+    // this.raggaa = {'test': 4}
+    // if(this.recipeService.selectIngredi) {
+    //   this.ingredients.push(this.recipeService.selectIngredi)
+    // }
+
+    for(let item of this.recipeService.selectIngredi) {
+      this.ingredients.push(item)
+    }  
+  }
+  
 
 }

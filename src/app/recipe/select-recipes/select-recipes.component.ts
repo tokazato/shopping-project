@@ -27,7 +27,6 @@ export class SelectRecipesComponent implements OnInit {
     this.activatedRoute.params.subscribe(para => {
       this.currentparam = para['id']
       this.selectedRecipe = this.recipeServer.recipes[this.currentparam]
-      console.log(this.selectedRecipe)
     })
   }
 
@@ -42,6 +41,10 @@ export class SelectRecipesComponent implements OnInit {
 
   editRecipes() {
     this.router.navigate(['edit'], {relativeTo: this.activatedRoute})
+  }
+
+  addToShoping() {
+    this.recipeServer.getIngredients(this.currentparam)
   }
 
 }

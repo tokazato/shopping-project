@@ -14,6 +14,7 @@ import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component'
 import { NewComponentComponent } from './recipe/new-component/new-component.component';
 import { NonSelectedComponent } from './recipe/non-selected/non-selected.component';
 import { SelectRecipesComponent } from './recipe/select-recipes/select-recipes.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SelectRecipesComponent } from './recipe/select-recipes/select-recipes.c
     RoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,7 +5,7 @@
         Manage Recipe
     </div>
     <div *ngIf="istrue" class="dropdown__link">
-        <p>to shopping list</p>
+        <p (click)="addToShoping()">to shopping list</p>
         <p (click)="editRecipes()">edit</p>
         <p (click)="deleteRecipes()">delete</p>
     </div>
