@@ -6,6 +6,7 @@ import { exhaustMap, map, tap } from 'rxjs/operators';
 @Injectable({providedIn: 'root'})
 export class RecipeService {
     selectIngredi = []
+    token = '';
     newingredebi = new Subject()
     recipes 
     = [
@@ -78,17 +79,9 @@ export class RecipeService {
         console.log(this.selectIngredi)
     }
 
-    fetchRecipe() {
-        return this.httpClient.get('https://shopping-f063d.firebaseio.com/recipes-box.json')
-        .pipe(
-            tap(param => {
-                for(let item of param) {
-                    this.recipes.push(param)
-                }
-            })
-        )
-        
-      }
+    // fetchRecipe() {
+    //     return this.httpClient.get('https://shopping-f063d.firebaseio.com/recipes-box.json')
+    //   }
 
 
 

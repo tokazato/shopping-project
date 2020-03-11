@@ -8,7 +8,8 @@
                 <a routerLink="/shopping-list" class="header__left__nav">Shopping List</a>
             </div>
             <div class="header__right">
-                <a class="header__left__nav">Login</a>
+                <a routerLink="/auth" *ngIf="!isLogin" class="header__left__nav"> Login</a>
+                <a routerLink="/auth" *ngIf="isLogin" class="header__left__nav">Log out</a>
                 <a (click)="saveRecipeToData()" class="header__left__nav">Save</a>
                 <a (click)="fetchRecipe()" class="header__left__nav">Fetch</a>
             </div>
