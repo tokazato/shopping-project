@@ -57,6 +57,12 @@ export class RecipeService {
         this.recipes.push(recipe)
     }
 
+    getToken() {
+        if( localStorage.getItem('token') ) {
+            return this.token = localStorage.getItem('token')
+        }
+    }
+
     
 
     deleteItem(index) {

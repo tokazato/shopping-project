@@ -9,7 +9,7 @@ import { NonSelectedComponent } from './recipe/non-selected/non-selected.compone
 import { SelectRecipesComponent } from './recipe/select-recipes/select-recipes.component';
 
 const appRoutes: Routes = [
-    {path: '', redirectTo: "auth", pathMatch: "full" },
+    {path: '', redirectTo: "shopping-list", pathMatch: "full" },
     {
         path: 'auth', 
         component: AuthComponent

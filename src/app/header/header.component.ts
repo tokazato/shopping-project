@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { RecipeService } from '../recipe/recipe.service';
 import { map, exhaustMap } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -18,13 +19,22 @@ export class HeaderComponent implements OnInit {
   constructor( 
     private httpClient: HttpClient,
     private recipeService: RecipeService,
-    private authRecipes: AuthService  ) { }
+    private authRecipes: AuthService,
+    private router: Router  ) { }
 
     ngOnInit() {
       // this.isLogin = this.authRecipes.isLogin
       this.authRecipes.catchLogin.subscribe((rat: boolean) => {
         this.isLogin = rat
       })
+      if( localStorage.getItem('token') ) {
+        this.isLogin = true;
+      }
+      setTimeout(() => {
+        localStorage.removeItem('token')
+        this.isLogin = false;
+        this.router.navigate(['auth'])
+      }, 15000);
   }
 
   saveRecipeToData() {
@@ -46,7 +56,11 @@ export class HeaderComponent implements OnInit {
       this.recipeService.recipes.push(item)
       }
     })
-    
+  }
+
+  logout() {
+    localStorage.removeItem('token')
+    this.isLogin = false;
   }
 
 }

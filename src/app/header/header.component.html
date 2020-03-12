@@ -3,15 +3,15 @@
         <div class="header">
             <div class="header__left">
                 <a routerLink="" class="header__left__logo">LOGO</a>
-                <a routerLink="/recipe" class="header__left__nav">Recipe</a>
-                <a routerLink="/auth" class="header__left__nav">Authtenticate</a>
+                <a *ngIf="isLogin" routerLink="/recipe" class="header__left__nav">Recipe</a>
+                <a *ngIf="!isLogin" routerLink="/auth" class="header__left__nav">Authtenticate</a>
                 <a routerLink="/shopping-list" class="header__left__nav">Shopping List</a>
             </div>
             <div class="header__right">
                 <a routerLink="/auth" *ngIf="!isLogin" class="header__left__nav"> Login</a>
-                <a routerLink="/auth" *ngIf="isLogin" class="header__left__nav">Log out</a>
-                <a (click)="saveRecipeToData()" class="header__left__nav">Save</a>
-                <a (click)="fetchRecipe()" class="header__left__nav">Fetch</a>
+                <a (click)="logout()" routerLink="/auth" *ngIf="isLogin" class="header__left__nav">Log out</a>
+                <a *ngIf="isLogin" (click)="saveRecipeToData()" class="header__left__nav">Save</a>
+                <a *ngIf="isLogin" (click)="fetchRecipe()" class="header__left__nav">Fetch</a>
             </div>
         </div>
     </div>
